@@ -13,7 +13,9 @@ class ClockViewController: UIViewController, DMClockDelegate {
     @IBOutlet weak var lblMinutes: UILabel!
     @IBOutlet weak var lblSeconds: UILabel!
     @IBOutlet weak var lblHexValue: UILabel!
+    
     var clock:DMClock?
+    static let BRIGHTNESS_INCREASE:Double = 10.0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,9 +34,19 @@ class ClockViewController: UIViewController, DMClockDelegate {
         self.lblSeconds.text = NSString(format:"%02i", self.clock!.seconds) as String
         self.lblHexValue.text = NSString(format: "#%02x%02x%02x", self.clock!.hours, self.clock!.minutes, self.clock!.seconds) as String
     }
+    
+    private func colorValueFromInt(value:Int) -> CGFloat {
+        return CGFloat(Double(value) / Double(255.0) * ClockViewController.BRIGHTNESS_INCREASE)
+    }
+    
+    private func updateBackgroundColor(){
+        let color:UIColor = UIColor(red: self.colorValueFromInt(self.clock!.hours), green: self.colorValueFromInt(self.clock!.minutes), blue: self.colorValueFromInt(self.clock!.seconds), alpha: 10.0)
+        self.view.backgroundColor = color;
+    }
 
     func clockDidUpdate() {
         self.updateLabels()
+        self.updateBackgroundColor()
     }
 
 }
