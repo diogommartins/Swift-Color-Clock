@@ -20,8 +20,8 @@ class DMClock: NSObject {
     var interval:Float = 1.0
     var delegate:DMClockDelegate?
     
-    init(interval:Float, delegate:DMClockDelegate?){
-        self.interval = interval
+    init(interval:Float?, delegate:DMClockDelegate?){
+        self.interval = interval!
         self.delegate = delegate
         self.timer = NSTimer()
         self.hours = 0
@@ -30,7 +30,7 @@ class DMClock: NSObject {
     }
     
     func start(){
-        self.timer = NSTimer(timeInterval: NSTimeInterval(self.interval), target: self, selector: "update", userInfo: nil, repeats: true)
+        self.timer = NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(self.interval), target: self, selector: "update", userInfo: nil, repeats: true)
     }
     
     func stop(){
