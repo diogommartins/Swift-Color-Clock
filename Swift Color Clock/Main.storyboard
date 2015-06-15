@@ -7,7 +7,7 @@
         <!--Clock View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ClockViewController" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="ClockViewController" customModule="Swift_Color_Clock" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -91,11 +91,10 @@
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <outlet property="lblHexValue" destination="D5q-Rn-0gH" id="ThG-jZ-70V"/>
-                        <outlet property="lblHours" destination="BLr-dQ-1yY" id="1si-uu-QNa"/>
-                        <outlet property="lblMinutes" destination="TOG-Xq-Rre" id="Qai-0J-9fn"/>
-                        <outlet property="lblSeconds" destination="fCH-3D-4Ih" id="1I2-wF-Dvc"/>
-                        <outletCollection property="lblDividers" destination="UCv-M6-kvY" id="hIS-rF-r4N"/>
+                        <outlet property="lblHexValue" destination="D5q-Rn-0gH" id="Lzu-Tx-fCO"/>
+                        <outlet property="lblHours" destination="BLr-dQ-1yY" id="HEm-V8-lQH"/>
+                        <outlet property="lblMinutes" destination="TOG-Xq-Rre" id="tRQ-FU-UbF"/>
+                        <outlet property="lblSeconds" destination="fCH-3D-4Ih" id="wsi-tU-yqE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
