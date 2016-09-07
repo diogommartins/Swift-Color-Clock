@@ -15,7 +15,7 @@ class ClockViewController: UIViewController, DMClockDelegate {
     @IBOutlet weak var lblHexValue: UILabel!
     
     var clock:DMClock?
-    static let BRIGHTNESS_INCREASE:Double = 10.0
+    static let MAX_COLOR_VALUE:CGFloat = 255.0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,12 +35,16 @@ class ClockViewController: UIViewController, DMClockDelegate {
         self.lblHexValue.text = NSString(format: "#%02x%02x%02x", self.clock!.hours, self.clock!.minutes, self.clock!.seconds) as String
     }
     
-    private func colorValueFromInt(value:Int) -> CGFloat {
-        return CGFloat(Double(value) / Double(255.0) * ClockViewController.BRIGHTNESS_INCREASE)
+    private func colorValueFromInt(value:Int, maxValue:Int) -> CGFloat {
+        return CGFloat((ClockViewController.MAX_COLOR_VALUE * CGFloat(value)) / CGFloat(maxValue)) / ClockViewController.MAX_COLOR_VALUE;
     }
     
     private func updateBackgroundColor(){
-        let color:UIColor = UIColor(red: self.colorValueFromInt(self.clock!.hours), green: self.colorValueFromInt(self.clock!.minutes), blue: self.colorValueFromInt(self.clock!.seconds), alpha: 10.0)
+        let red:CGFloat = self.colorValueFromInt(self.clock!.hours, maxValue:24);
+        let green:CGFloat = self.colorValueFromInt(self.clock!.minutes, maxValue:60);
+        let blue:CGFloat = self.colorValueFromInt(self.clock!.seconds, maxValue:60);
+
+        let color:UIColor = UIColor(red: red, green: green, blue: blue, alpha: 10.0);
         self.view.backgroundColor = color;
     }
 

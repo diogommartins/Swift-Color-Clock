@@ -50,6 +50,6 @@ class DMClock: NSObject {
         let formater:NSDateFormatter = NSDateFormatter()
         formater.dateFormat = format
         
-        return formater.stringFromDate(date).toInt()!
+        return Int(formater.stringFromDate(date))!
     }
 }
